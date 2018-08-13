@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: voting-analytics
-        image: microsoft/sample-servicemesh-voting-analytics:2.0
+        image: mcr.microsoft.com/aks/samples/voting-app/analytics:2.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

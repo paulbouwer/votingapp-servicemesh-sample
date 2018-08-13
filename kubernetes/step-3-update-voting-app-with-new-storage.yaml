@@ -45,7 +45,7 @@ spec:
     spec:
       containers:
       - name: voting-storage
-        image: paulbouwer.azurecr.io/microsoft/sample-servicemesh-voting-storage:2.0
+        image: mcr.microsoft.com/aks/samples/voting-app/storage:2.0
         args: ["--ignore-db-dir=lost+found"]
         ports:
         - containerPort: 3306
@@ -109,7 +109,7 @@ spec:
     spec:
       containers:
       - name: voting-analytics
-        image: paulbouwer.azurecr.io/microsoft/sample-servicemesh-voting-analytics:2.0
+        image: mcr.microsoft.com/aks/samples/voting-app/analytics:2.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -152,7 +152,7 @@ spec:
     spec:
       containers:
       - name: voting-app
-        image: paulbouwer.azurecr.io/microsoft/sample-servicemesh-voting-app:2.0
+        image: mcr.microsoft.com/aks/samples/voting-app/app:2.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

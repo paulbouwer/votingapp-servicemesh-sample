@@ -10,11 +10,11 @@ LABEL org.opencontainers.image.title="Voting Storage - AKS Istio sample" \
       org.opencontainers.image.created=$IMAGE_CREATE_DATE \
       org.opencontainers.image.version=$IMAGE_VERSION \
       org.opencontainers.image.authors="Microsoft" \
-      org.opencontainers.image.url="https://mcr.microsoft.com/aks/samples/istio/voting-storage" \
-      org.opencontainers.image.documentation="https://github.com/Azure-Samples/istio-voting-app" \
+      org.opencontainers.image.url="https://mcr.microsoft.com/aks/samples/voting-app/storage" \
+      org.opencontainers.image.documentation="https://github.com/Azure-Samples/aks-voting-app" \
       org.opencontainers.image.vendor="Microsoft" \
       org.opencontainers.image.licenses="MIT" \
-      org.opencontainers.image.source="https://github.com/Azure-Samples/istio-voting-app.git" \
+      org.opencontainers.image.source="https://github.com/Azure-Samples/aks-voting-app.git" \
       org.opencontainers.image.revision=$IMAGE_SOURCE_REVISION 
 
 ADD azurevote.sql /docker-entrypoint-initdb.d
