@@ -12,15 +12,15 @@ _build_docker_image() {
 
 # app
 
-_build_docker_image "voting-app/app" "1.0" "mcr.microsoft.com/aks/samples/voting-app/app"
-_build_docker_image "voting-app/app" "2.0" "mcr.microsoft.com/aks/samples/voting-app/app"
+_build_docker_image "voting/app" "1.0" "mcr.microsoft.com/aks/samples/voting/app"
+_build_docker_image "voting/app" "2.0" "mcr.microsoft.com/aks/samples/voting/app"
 
 # analytics
 
-_build_docker_image "voting-app/analytics" "1.0" "mcr.microsoft.com/aks/samples/voting-app/analytics"
-_build_docker_image "voting-app/analytics" "1.1" "mcr.microsoft.com/aks/samples/voting-app/analytics"
-_build_docker_image "voting-app/analytics" "2.0" "mcr.microsoft.com/aks/samples/voting-app/analytics"
+_build_docker_image "voting/analytics" "1.0" "mcr.microsoft.com/aks/samples/voting/analytics"
+_build_docker_image "voting/analytics" "1.1" "mcr.microsoft.com/aks/samples/voting/analytics"
+_build_docker_image "voting/analytics" "2.0" "mcr.microsoft.com/aks/samples/voting/analytics"
 
 # storage
 
-_build_docker_image "voting-app/storage" "2.0" "mcr.microsoft.com/aks/samples/voting-app/storage"
+_build_docker_image "voting/storage" "2.0" "mcr.microsoft.com/aks/samples/voting/storage"
