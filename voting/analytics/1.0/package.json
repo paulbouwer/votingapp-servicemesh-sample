@@ -1,7 +1,7 @@
 {
-  "name": "voting-analytics",
+  "name": "aks-voting-analytics",
   "version": "1.0.0",
-  "description": "Voting analytics service for the service mesh demo.",
+  "description": "The analytics component that forms part of the AKS Voting App sample application.",
   "author": "Microsoft",
   "license": "MIT",
   "main": "server.js",

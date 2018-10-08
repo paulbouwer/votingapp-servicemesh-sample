@@ -1,7 +1,7 @@
 {
-  "name": "voting-app",
+  "name": "aks-voting-app",
   "version": "1.0.0",
-  "description": "Voting app for the service mesh demo.",
+  "description": "The app component that forms part of the AKS Voting App sample application.",
   "author": "Microsoft",
   "license": "MIT",
   "main": "server.js",

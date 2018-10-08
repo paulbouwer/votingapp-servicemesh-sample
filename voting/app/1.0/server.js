@@ -17,10 +17,11 @@ app.use(morgan('combined'));
 
 // Configuration and potential overrides
 var port = process.env.PORT || 8080;
-var title = process.env.TITLE || "Azure Voting App";
+var title = process.env.TITLE || "AKS Voting App";
 var vote1 = process.env.VOTE1VALUE || "Cats";
 var vote2 = process.env.VOTE2VALUE || "Dogs";
 var showDetails = process.env.SHOWDETAILS || false;
+var featureFlag = process.env.FEATUREFLAG || false;
 var redisHost = process.env.REDIS_HOST || "voting-storage";
 var redisPort = process.env.REDIS_PORT || 6379;
 var analyticsHost = process.env.ANALYTICS_HOST || "voting-analytics";
@@ -63,9 +64,9 @@ var analyticsServerUrl = 'http://' + analyticsHost + ':' + analyticsPort + '/ana
 // GET - display vote form and analytics
 app.get('/', function (req, res) {
 
-  var isFeatureFlagEnabled = false;
+  var isFeatureFlagSet = false;
   if (req.cookies && req.cookies.featureflag) {
-    isFeatureFlagEnabled = true;
+    isFeatureFlagSet = true;
   }
 
   request.get( { headers: propagateTracingHeaders(req), url: analyticsServerUrl, json: true }, (analyticsError, analyticsResponse, analyticsBody) => {
@@ -73,8 +74,9 @@ app.get('/', function (req, res) {
     var analytics = analyticsBody.text;
     
     res.render('vote', {
-      featureflag: {
-        isEnabled: isFeatureFlagEnabled
+      featureFlag: {
+        isEnabled: String(featureFlag) == "true",
+        isSet: isFeatureFlagSet
       },
       title: title,
       vote1: vote1,
