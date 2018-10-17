@@ -55,7 +55,7 @@ spec:
     spec:
       containers:
       - name: voting-analytics
-        image: mcr.microsoft.com/aks/samples/voting-app/analytics:1.0
+        image: mcr.microsoft.com/aks/samples/voting/analytics:1.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -97,13 +97,15 @@ spec:
     spec:
       containers:
       - name: voting-app
-        image: mcr.microsoft.com/aks/samples/voting-app/app:1.0
+        image: mcr.microsoft.com/aks/samples/voting/app:1.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
           name: http
         env:
         - name: SHOWDETAILS
+          value: "true"
+        - name: FEATUREFLAG
           value: "true"
         - name: REDIS_HOST
           value: "voting-storage"

@@ -1,30 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: voting-app-1-0
+  name: voting-analytics-1-0
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: voting-app
+      app: voting-analytics
       version: "1.0"
   template:
     metadata:
       labels:
-        app: voting-app
+        app: voting-analytics
         version: "1.0"
     spec:
       containers:
-      - name: voting-app
-        image: mcr.microsoft.com/aks/samples/voting-app/app:1.0
+      - name: voting-analytics
+        image: mcr.microsoft.com/aks/samples/voting/analytics:1.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
           name: http
         env:
-        - name: SHOWDETAILS
-          value: "true"
         - name: REDIS_HOST
           value: "voting-storage"
-        - name: ANALYTICS_HOST
-          value: "voting-analytics"
