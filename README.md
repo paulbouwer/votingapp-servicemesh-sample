@@ -21,7 +21,7 @@ The AKS Voting App components are built from the source located in the `src` fol
 
 ---
 
-This replaces all previous versions of the Azure Voting App sample to provide a single configurable sample that caters to multiple scenarios:
+This replaces all previous versions of the Azure Voting App sample to provide a single configurable sample that supports multiple scenarios:
 
 - https://github.com/Azure-Samples/azure-voting-app-redis
 - https://github.com/Azure-Samples/azure-voting-app
