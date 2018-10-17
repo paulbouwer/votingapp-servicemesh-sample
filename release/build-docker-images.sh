@@ -10,17 +10,19 @@ _build_docker_image() {
   cd -
 }
 
+REGISTRY="mcr.microsoft.com/aks/samples"
+
 # app
 
-_build_docker_image "voting/app" "1.0" "mcr.microsoft.com/aks/samples/voting/app"
-_build_docker_image "voting/app" "2.0" "mcr.microsoft.com/aks/samples/voting/app"
+_build_docker_image "src/app" "1.0" "$REGISTRY/voting/app"
+_build_docker_image "src/app" "2.0" "$REGISTRY/voting/app"
 
 # analytics
 
-_build_docker_image "voting/analytics" "1.0" "mcr.microsoft.com/aks/samples/voting/analytics"
-_build_docker_image "voting/analytics" "1.1" "mcr.microsoft.com/aks/samples/voting/analytics"
-_build_docker_image "voting/analytics" "2.0" "mcr.microsoft.com/aks/samples/voting/analytics"
+_build_docker_image "src/analytics" "1.0" "$REGISTRY/voting/analytics"
+_build_docker_image "src/analytics" "1.1" "$REGISTRY/voting/analytics"
+_build_docker_image "src/analytics" "2.0" "$REGISTRY/voting/analytics"
 
 # storage
 
-_build_docker_image "voting/storage" "2.0" "mcr.microsoft.com/aks/samples/voting/storage"
+_build_docker_image "src/storage" "2.0" "$REGISTRY/voting/storage"
