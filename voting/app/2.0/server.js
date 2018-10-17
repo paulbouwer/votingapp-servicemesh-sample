@@ -17,26 +17,31 @@ app.use(morgan('combined'));
 
 // Configuration and potential overrides
 var port = process.env.PORT || 8080;
-var title = process.env.TITLE || "Azure Voting App";
+var title = process.env.TITLE || "AKS Voting App";
 var vote1 = process.env.VOTE1VALUE || "Cats";
 var vote2 = process.env.VOTE2VALUE || "Dogs";
 var showDetails = process.env.SHOWDETAILS || false;
+var featureFlag = process.env.FEATUREFLAG || false;
 var mySQLHost = process.env.MYSQL_HOST || "voting-storage";
 var mySQLUser = process.env.MYSQL_USER;
 var mySQLPassword = process.env.MYSQL_PASSWORD;
 var mySQLDatabase = process.env.MYSQL_DATABASE;
+var mySQLPort = process.env.MYSQL_PORT || 3306;
 var analyticsHost = process.env.ANALYTICS_HOST || "voting-analytics";
 var analyticsPort = process.env.ANALYTICS_PORT || 8080;
 
-// Set up mysql
-var mysql = require('mysql');
-var mysqlConnection = mysql.createConnection({
-  host          : mySQLHost,
-  user          : mySQLUser,
-  password      : mySQLPassword,
-  database      : mySQLDatabase,
-  insecureAuth  : true
-});
+// Set up mySQL connection
+var mysql = require('mysql2');
+var config =
+{
+  host            : mySQLHost,
+  user            : mySQLUser,
+  password        : mySQLPassword,
+  database        : mySQLDatabase,
+  port            : mySQLPort,
+  ssl             : true
+};
+var mysqlConnection = mysql.createConnection(config);
 
 function propagateTracingHeaders(req) {
   var headers = {};
@@ -65,9 +70,9 @@ var analyticsServerUrl = 'http://' + analyticsHost + ':' + analyticsPort + '/ana
 // GET - display vote form and analytics
 app.get('/', function (req, res) {
 
-  var isFeatureFlagEnabled = false;
+  var isFeatureFlagSet = false;
   if (req.cookies && req.cookies.featureflag) {
-    isFeatureFlagEnabled = true;
+    isFeatureFlagSet = true;
   }
 
   request.get( { headers: propagateTracingHeaders(req), url: analyticsServerUrl, json: true }, (analyticsError, analyticsResponse, analyticsBody) => {
@@ -75,8 +80,9 @@ app.get('/', function (req, res) {
     var analytics = analyticsBody.text;
     
     res.render('vote', {
-      featureflag: {
-        isEnabled: isFeatureFlagEnabled
+      featureFlag: {
+        isEnabled: String(featureFlag) == "true",
+        isSet: isFeatureFlagSet
       },
       title: title,
       vote1: vote1,

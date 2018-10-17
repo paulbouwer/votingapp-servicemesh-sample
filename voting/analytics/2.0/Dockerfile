@@ -1,16 +1,16 @@
-FROM node:10.6.0-alpine
+FROM node:10.11.0-alpine
 
 ARG IMAGE_CREATE_DATE
 ARG IMAGE_VERSION
 ARG IMAGE_SOURCE_REVISION
 
 # Metadata as defined in OCI image spec annotations - https://github.com/opencontainers/image-spec/blob/master/annotations.md
-LABEL org.opencontainers.image.title="Voting Analytics Service - AKS Istio sample" \
-      org.opencontainers.image.description="Provides the voting analytics service component for the AKS Istio sample." \
+LABEL org.opencontainers.image.title="AKS Voting App - analytics component" \
+      org.opencontainers.image.description="The analytics component that forms part of the AKS Voting App sample application." \
       org.opencontainers.image.created=$IMAGE_CREATE_DATE \
       org.opencontainers.image.version=$IMAGE_VERSION \
       org.opencontainers.image.authors="Microsoft" \
-      org.opencontainers.image.url="https://mcr.microsoft.com/aks/samples/voting-app/analytics" \
+      org.opencontainers.image.url="https://mcr.microsoft.com/aks/samples/voting/analytics" \
       org.opencontainers.image.documentation="https://github.com/Azure-Samples/aks-voting-app" \
       org.opencontainers.image.vendor="Microsoft" \
       org.opencontainers.image.licenses="MIT" \
