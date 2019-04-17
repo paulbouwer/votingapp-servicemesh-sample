@@ -1,3 +1,7 @@
+> THIS SAMPLE HAS MOVED TO OFFICIAL REPO - https://github.com/Azure-Samples/aks-voting-app
+>
+> This repository has been marked as archived and read-only.
+
 # AKS Voting App sample
 
 This repo provides the source code and scenario artefacts for the AKS Voting App sample used in the [AKS documentation](https://docs.microsoft.com/en-us/azure/aks/).
